@@ -15,10 +15,17 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuarios = Usuario::all();
-        return view('usuarios.index', ['usuarios'=> $usuarios ]);
+        $usuarios = Usuario::on();
+        if($request['search'] ?? false) {
+            $criterio = '%'.$request['search'].'%';
+            $usuarios = $usuarios->whereRaw('nombre LIKE ?', [$criterio])
+                            ->orWhereRaw('apellido LIKE ?', [$criterio])
+                            ->orWhereRaw('correo LIKE ?', [$criterio]);
+        }
+
+        return view('usuarios.index', ['usuarios'=> $usuarios->get(), 'search'=> $request['search'] ?? '' ]);
     }
 
     /**
