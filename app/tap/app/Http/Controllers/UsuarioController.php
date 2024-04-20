@@ -108,10 +108,10 @@ class UsuarioController extends Controller
     public function borrarUsuario(Request $request) {
         $usuario = Usuario::where('id', $request['id'])->first();
         if(!$usuario) {
-            return redirect->route('usuarios.index')->withErrors(['msg'=>'Usuario no encontrado']);    
+            return redirect()->route('usuarios.index')->withErrors(['msg'=>'Usuario no encontrado']);    
         }
         if($usuario['correo'] == \Auth::id()) {
-            return redirect->route('usuarios.index')->withErrors(['msg'=>'Un usuario no puede borrarse a sí mismo']);    
+            return redirect()->route('usuarios.index')->withErrors(['msg'=>'Un usuario no puede borrarse a sí mismo']);    
         }
 
         $usuario->delete();
