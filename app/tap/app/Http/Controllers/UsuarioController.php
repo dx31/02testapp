@@ -48,7 +48,12 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         $payload = $request->all();
+        if(!$request['id'] && !$request['password']) {
+            return redirect()->back()->withInput()->withErrors('Debe indicar una contraseña');
+        }
+
         $payload['password'] = bcrypt($request['password']);
+
 
         $usuario = Usuario::updateOrCreate(['id' => $request['id'] ?? null ], $payload);
 

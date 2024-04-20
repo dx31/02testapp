@@ -1,6 +1,6 @@
 @extends('../layouts/app', ['titulo'=> 'Editor de usuarios' ])
 @section('content')
-<div class="mb-4 max-w-xs">
+<div class="rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 px-3 py-10 bg-gray-200 flex justify-center">
     <form action="{{route('usuarios.store') }}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="post">
         {{csrf_field() }}
         <input type="hidden" name="id" value="{{$usuario['id']??''}}">
@@ -35,8 +35,8 @@
                 type="password" name="repassword">
         </div>
         <div class="mb-4">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Buscar</button>
-            <a href={{route('usuarios.index')}} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cancelar</a>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Crear usuario</button>
+            <a href={{route('usuarios.index')}} class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancelar</a>
         </div>
     </form>
 </div>

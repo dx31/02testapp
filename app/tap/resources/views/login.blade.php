@@ -7,14 +7,6 @@
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-  <div class="container mx-auto">
-  </div>
-</body>
-</html>
-
-
-
-<body>
   <div class="rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 px-3 py-10 bg-gray-200 flex justify-center">
     <form method="post" action="{{ route('login.post') }}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       {{ csrf_field() }}
