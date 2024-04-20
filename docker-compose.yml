@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  app:
+    image: mattrayner/lamp:latest-2004-php7
+    container_name: tap-app
+    volumes:
+      - ./app:/var/www/html
+      - ./php.ini:/etc/php/7.4/apache2/php.ini     
+      - ./apache2.conf:/etc/apache2/apache2.conf
+    ports:
+      - "9700:80"
+
+
+networks:
+  int-nw:
+    internal: true
+  out-nw:
+    internal: false
